@@ -12,8 +12,8 @@
 ---
 
 <p align="center"> This project it's about crypto tracker. Where u can see listed cryptos from realtime database (coingecko).
-
-Also change currency u want to see (USD or EURO)
+<strong>Important NOTE: I'm using free coingecko api where just can do 10 req's per minute</strong>
+Also change currency u want to see (USD or EURO):
 <br>
 
 </p>
