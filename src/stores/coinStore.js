@@ -3,7 +3,7 @@ import { defineStore } from 'pinia'
 export const useCryptoStore = defineStore('cryptoStore', {
   state: () => ({
     cryptoData: [],
-    currency: 'usd'
+    currency: 'brl'
   }),
   actions: {
     setCryptoData(data) {

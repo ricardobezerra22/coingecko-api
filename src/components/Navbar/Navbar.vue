@@ -8,7 +8,7 @@
       </div>
 
       <div class="navbar-dropdown-list">
-        <span class="navbar-dropdown-list-title">{{ currentCurrencyTitle }}</span>
+        <span class="navbar-dropdown-list-title">{{ currentCurrency.toUpperCase() }}</span>
         <v-icon
           v-if="!isDropdownOpen"
           class="navbar-dropdown-list-icon"
@@ -42,7 +42,7 @@
 </template>
 
 <script setup>
-import { reactive, ref } from 'vue'
+import { onMounted, reactive, ref } from 'vue'
 import { useCryptoStore } from '@/stores/coinStore'
 const navTitle = 'Bitcoin Live Tracker'
 const cryptoStore = useCryptoStore()
@@ -54,6 +54,10 @@ const currency = reactive([
   {
     title: 'EUR',
     value: 'eur'
+  },
+  {
+    title: 'BRL',
+    value: 'brl'
   }
 ])
 const icons = reactive({
@@ -61,13 +65,12 @@ const icons = reactive({
   up: 'mdi-chevron-up'
 })
 const isDropdownOpen = ref(false)
-const currentCurrencyTitle = ref('USD')
-const currentCurrency = ref('usd')
+
+const currentCurrency = ref('brl')
 function toggleDropdown() {
   isDropdownOpen.value = !isDropdownOpen.value
 }
 function changeValues(data) {
-  currentCurrencyTitle.value = data.title
   currentCurrency.value = data.value
   cryptoStore.setCurrency(currentCurrency.value)
   toggleDropdown()
@@ -76,6 +79,9 @@ const emit = defineEmits(['handleHomeNavigation'])
 const handleHomeNavigation = () => {
   emit('handleHomeNavigation')
 }
+onMounted(() => {
+  cryptoStore.setCurrency(currentCurrency.value)
+})
 </script>
 
 <style lang="scss" scoped src="./style.scss"></style>

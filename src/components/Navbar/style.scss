@@ -59,6 +59,7 @@
   align-items: center;
   gap: 5px;
   position: relative; // Adiciona posicionamento relativo para o dropdown
+  min-width: 4.0625rem;
 
   &-title {
     @include font-source(18px, white, 400, normal);
